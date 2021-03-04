@@ -23,7 +23,6 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" >
-                    <Button HorizontalAlignment="Left" IsEnabled="False">Применить</Button>
                     <Button HorizontalAlignment="Left" Click="Edit">Редактировать</Button>
                     <Button HorizontalAlignment="Left" Click="Add">Добавить</Button>
                     <Button HorizontalAlignment="Left" Click="Remove">Удалить</Button>
