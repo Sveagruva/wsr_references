@@ -17,13 +17,10 @@ using System.Windows.Shapes;
 
 namespace app.Managers
 {
-    /// <summary>
-    /// Interaction logic for ClientManger.xaml
-    /// </summary>
-    public partial class ClientManager : Manager
+    public abstract class ClientManagerBase : Manager<Client> { }
+    public partial class ClientManager : ClientManagerBase
     {
-        public override Type GetManagedType() => typeof(Client);
-        protected override DataGrid GetDataGrid() => display;
+        public override DataGrid GetDataGrid() => display;
 
         public ClientManager()
         {
@@ -36,7 +33,7 @@ namespace app.Managers
             return new Tuple<bool, string>(true, "");
         }
 
-        public override bool Constructor(StackPanel element)
+        protected override bool Constructor(StackPanel element)
         {
             TextBox textbox = new TextBox();
 

@@ -19,31 +19,5 @@ namespace app
 
             return _db;
         }
-
-        private object GetDBSet(string name)
-        {
-            MethodInfo GetSetMethod = _db.GetType().GetMethod("get_" + name);
-            return GetSetMethod.Invoke(_db, null);
-        }
-
-        public void Add(object obj)
-        {
-            Type type = obj.GetType();
-
-            object dbSet = _db.GetDBSet(type.Name);
-            dbSet.GetType().GetMethod("Add").Invoke(dbSet, new object[] { obj });
-            _db.SaveChanges();
-        }
-
-        public void Remove(object obj)
-        {
-            object DBSet = GetDBSet(obj.GetType().Name);
-
-            MethodInfo removeMethod = DBSet.GetType().GetMethod("Remove");
-
-            removeMethod.Invoke(DBSet, new object[] { obj });
-
-            _db.SaveChanges();
-        }
     }
 }

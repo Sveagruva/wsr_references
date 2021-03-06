@@ -1,11 +1,12 @@
-﻿<local:Manager x:Class="app.Managers.ClientManager"
+﻿<local:ClientManagerBase
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:app.Managers"
+    x:Class="app.Managers.ClientManager"
       mc:Ignorable="d" 
       Title="ClientManger">
     <DataGrid x:Name="display" CanUserAddRows="False" >
     </DataGrid>
-</local:Manager>
+</local:ClientManagerBase>

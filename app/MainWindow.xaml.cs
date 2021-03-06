@@ -27,7 +27,7 @@ namespace app
             db.GetAccessPoint();
         }
 
-        private Dictionary<string, Manager> _managers = new Dictionary<string, Manager>();
+        private Dictionary<string, IManager> _managers = new Dictionary<string, IManager>();
         private String _currentPage = "";
 
         private void GoToPage(Page page)
@@ -41,12 +41,12 @@ namespace app
             try
             {
                 if (!_managers.ContainsKey(reqested))
-                    _managers.Add(reqested, Activator.CreateInstance(Type.GetType("app.Managers." + reqested + "Manager")) as Manager);
+                    _managers.Add(reqested, Activator.CreateInstance(Type.GetType("app.Managers." + reqested + "Manager")) as IManager);
             }
             catch (Exception) { }
 
-            if (_managers.TryGetValue(reqested, out Manager manager))
-                GoToPage(manager);
+            if (_managers.TryGetValue(reqested, out IManager manager))
+                GoToPage(manager.GetPage());
             else
                 Console.Error.WriteLine(reqested + " manager not found");
 
@@ -55,19 +55,19 @@ namespace app
 
         private void Add(object sender, RoutedEventArgs e)
         {
-            if (_managers.TryGetValue(_currentPage, out Manager manager))
+            if (_managers.TryGetValue(_currentPage, out IManager manager))
                 manager.Add();
         }
 
         private void Remove(object sender, RoutedEventArgs e)
         {
-            if (_managers.TryGetValue(_currentPage, out Manager manager))
+            if (_managers.TryGetValue(_currentPage, out IManager manager))
                 manager.Delete();
         }
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-            if (_managers.TryGetValue(_currentPage, out Manager manager))
+            if (_managers.TryGetValue(_currentPage, out IManager manager))
                 manager.Edit();
         }
     }

@@ -15,10 +15,8 @@ using System.Windows.Shapes;
 
 namespace app.Managers
 {
-    /// <summary>
-    /// Interaction logic for AgentManager.xaml
-    /// </summary>
-    public partial class WorkerManager : Manager
+    public abstract class WorkerManagerBase : Manager<Worker> { }
+    public partial class WorkerManager : WorkerManagerBase
     {
         public WorkerManager()
         {
@@ -26,7 +24,7 @@ namespace app.Managers
             display.ItemsSource = db.GetAccessPoint().Worker.ToArray();
         }
 
-        public override bool Constructor(StackPanel element)
+        protected override bool Constructor(StackPanel element)
         {
             TextBox textbox = new TextBox();
 
@@ -62,7 +60,6 @@ namespace app.Managers
             return new Tuple<bool, string>(true, "");
         }
 
-        public override Type GetManagedType() => typeof(Worker);
-        protected override DataGrid GetDataGrid() => display;
+        override public DataGrid GetDataGrid() => display;
     }
 }
