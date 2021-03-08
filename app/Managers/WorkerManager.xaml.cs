@@ -48,7 +48,7 @@ namespace app.Managers
             return true;
         }
 
-        public override Tuple<bool, string> Validate(Tuple<object, bool> obj)
+        protected override Tuple<bool, string> Validate(Tuple<object, bool> obj)
         {
             if (!obj.Item2)
                 return new Tuple<bool, string>(true, "");
@@ -60,6 +60,6 @@ namespace app.Managers
             return new Tuple<bool, string>(true, "");
         }
 
-        override public DataGrid GetDataGrid() => display;
+        override protected DataGrid GetDataGrid() => display;
     }
 }

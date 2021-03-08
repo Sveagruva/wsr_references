@@ -20,7 +20,7 @@ namespace app.Managers
     public abstract class ClientManagerBase : Manager<Client> { }
     public partial class ClientManager : ClientManagerBase
     {
-        public override DataGrid GetDataGrid() => display;
+        protected override DataGrid GetDataGrid() => display;
 
         public ClientManager()
         {
@@ -28,7 +28,7 @@ namespace app.Managers
             display.ItemsSource = db.Client.ToArray();
         }
 
-        public override Tuple<bool, string> Validate(Tuple<object, bool> obj)
+        protected override Tuple<bool, string> Validate(Tuple<object, bool> obj)
         {
             return new Tuple<bool, string>(true, "");
         }

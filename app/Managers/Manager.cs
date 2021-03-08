@@ -11,7 +11,7 @@ namespace app.Managers
     public abstract class Manager<managedType> : Page, IManager
         where managedType : class
     {
-        public readonly static Type managerType = typeof(managedType);
+        protected readonly static Type managerType = typeof(managedType);
         protected SpeedrunEntities db = new SpeedrunEntities();
 
         protected virtual managedType CreateManagedInstance() => Activator.CreateInstance<managedType>();
@@ -82,17 +82,16 @@ namespace app.Managers
             dataGrid.ItemsSource = newList;
         }
 
-        public abstract DataGrid GetDataGrid();
-        public abstract Tuple<bool, string> Validate(Tuple<object, bool> obj);
+        protected abstract DataGrid GetDataGrid();
+        protected abstract Tuple<bool, string> Validate(Tuple<object, bool> obj);
         // TODO use validate action as parameter in Tuple<bool, string> Validate(Tuple<object, bool> obj);
-        public enum ValidateAction { Add, Edit, Remove }
+        protected enum ValidateAction { Add, Edit, Remove }
 
         protected abstract bool Constructor(StackPanel element);
     }
 
     public interface IManager
     {
-        Tuple<bool, string> Validate(Tuple<object, bool> obj);
         void Delete();
         void Edit();
         void Add();
