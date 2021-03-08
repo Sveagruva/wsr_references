@@ -12,12 +12,15 @@ namespace app.Managers
         where managedType : class
     {
         public readonly static Type managerType = typeof(managedType);
+        protected SpeedrunEntities db = new SpeedrunEntities();
+
+        protected virtual managedType CreateManagedInstance() => Activator.CreateInstance<managedType>();
 
         public void Add()
         {
             DataGrid dataGrid = GetDataGrid();
 
-            managedType newObject = (managedType)Activator.CreateInstance(managerType);
+            managedType newObject = CreateManagedInstance();
             bool? result = new AddEditPopUp(newObject, Constructor, Validate).ShowDialog();
 
             if (!(bool)result)
@@ -27,7 +30,7 @@ namespace app.Managers
             newList.Insert(0, newObject);
             dataGrid.ItemsSource = newList;
 
-            db.GetAccessPoint().Set<managedType>().Add(newObject);
+            db.Set<managedType>().Add(newObject);
         }
 
         public void Edit()
@@ -45,12 +48,12 @@ namespace app.Managers
 
             if (!(bool)result)
             {
-                db.GetAccessPoint().ChangeTracker.Entries().ToList().ForEach(ent => ent.Reload());
-                dataGrid.ItemsSource = db.GetAccessPoint().Set<managedType>().ToList();
+                db.ChangeTracker.Entries().ToList().ForEach(ent => ent.Reload());
+                dataGrid.ItemsSource = db.Set<managedType>().ToList();
                 return;
             }
 
-            db.GetAccessPoint().SaveChanges();
+            db.SaveChanges();
         }
 
         public void Delete()
@@ -72,7 +75,7 @@ namespace app.Managers
                 return;
             }
 
-            db.GetAccessPoint().Set<managedType>().Remove(objectForDeleting);
+            db.Set<managedType>().Remove(objectForDeleting);
 
             var newList = dataGrid.ItemsSource.Cast<managedType>().ToList();
             newList.Remove(objectForDeleting);
@@ -86,10 +89,7 @@ namespace app.Managers
 
         protected abstract bool Constructor(StackPanel element);
 
-        public Page GetPage()
-        {
-            return this;
-        }
+        public Page GetPage() => this;
     }
 
     public interface IManager

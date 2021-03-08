@@ -25,7 +25,7 @@ namespace app.Managers
         public ClientManager()
         {
             InitializeComponent();
-            display.ItemsSource = db.GetAccessPoint().Client.ToArray();
+            display.ItemsSource = db.Client.ToArray();
         }
 
         public override Tuple<bool, string> Validate(Tuple<object, bool> obj)

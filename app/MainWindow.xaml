@@ -12,10 +12,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <Button Click="OpenPage" Tag="Client">Клиенты</Button>
-            <Button Click="OpenPage" Tag="Worker">Риэлторы</Button>
-        </StackPanel>
+        <StackPanel Grid.Column="0" Name="managersStackPanel"></StackPanel>
         <StackPanel Grid.Column="1">
             <Grid>
                 <Grid.ColumnDefinitions>

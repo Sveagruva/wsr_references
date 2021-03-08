@@ -24,29 +24,43 @@ namespace app
         public MainWindow()
         {
             InitializeComponent();
-            db.GetAccessPoint();
+
+            foreach (KeyValuePair<Type, string> managerEntry in managersNames)
+            {
+                Button btn = new Button();
+                btn.Tag = managerEntry.Key;
+                btn.Content = managerEntry.Value;
+                btn.AddHandler(Button.ClickEvent, new RoutedEventHandler(OpenPage));
+                managersStackPanel.Children.Add(btn);
+            }
         }
 
-        private Dictionary<string, IManager> _managers = new Dictionary<string, IManager>();
-        private String _currentPage = "";
-
-        private void GoToPage(Page page)
+        private Dictionary<Type, string> managersNames = new Dictionary<Type, string>()
         {
-            mainFrame.Navigate(page);
+            { typeof(ClientManager), "Клиенты" },
+            { typeof(WorkerManager), "Агенты" }
+        };
+
+        private Dictionary<Type, IManager> _managers = new Dictionary<Type, IManager>();
+        private Type _currentPage = typeof(ClientManager);
+
+        private void GoToPage(IManager manager)
+        {
+            mainFrame.Navigate(manager as Page);
         }
 
         private void OpenPage(object sender, RoutedEventArgs e)
         {
-            string reqested = ((Button)sender).Tag as string;
+            Type reqested = ((Button)sender).Tag as Type;
             try
             {
                 if (!_managers.ContainsKey(reqested))
-                    _managers.Add(reqested, Activator.CreateInstance(Type.GetType("app.Managers." + reqested + "Manager")) as IManager);
+                    _managers.Add(reqested, Activator.CreateInstance(reqested) as IManager);
             }
             catch (Exception) { }
 
             if (_managers.TryGetValue(reqested, out IManager manager))
-                GoToPage(manager.GetPage());
+                GoToPage(manager);
             else
                 Console.Error.WriteLine(reqested + " manager not found");
 

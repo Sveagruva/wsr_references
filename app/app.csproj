@@ -102,7 +102,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CompanyModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="db.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Managers\WorkerManager.xaml.cs">
       <DependentUpon>WorkerManager.xaml</DependentUpon>

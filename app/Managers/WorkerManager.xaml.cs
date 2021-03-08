@@ -21,7 +21,7 @@ namespace app.Managers
         public WorkerManager()
         {
             InitializeComponent();
-            display.ItemsSource = db.GetAccessPoint().Worker.ToArray();
+            display.ItemsSource = db.Worker.ToArray();
         }
 
         protected override bool Constructor(StackPanel element)
