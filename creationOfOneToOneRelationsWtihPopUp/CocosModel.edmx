@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="testingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cocos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Weight" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CocosPackage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CocosId" Type="int" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CocosPackage_Cocos">
+          <End Role="Cocos" Type="Self.Cocos" Multiplicity="1" />
+          <End Role="CocosPackage" Type="Self.CocosPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cocos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CocosPackage">
+              <PropertyRef Name="CocosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="testingModelStoreContainer">
+          <EntitySet Name="Cocos" EntityType="Self.Cocos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CocosPackage" EntityType="Self.CocosPackage" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CocosPackage_Cocos" Association="Self.FK_CocosPackage_Cocos">
+            <End Role="Cocos" EntitySet="Cocos" />
+            <End Role="CocosPackage" EntitySet="CocosPackage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Coco">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Weight" Type="Double" Nullable="false" />
+          <NavigationProperty Name="CocosPackages" Relationship="Self.FK_CocosPackage_Cocos" FromRole="Cocos" ToRole="CocosPackage" />
+        </EntityType>
+        <EntityType Name="CocosPackage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CocosId" Type="Int32" Nullable="false" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coco" Relationship="Self.FK_CocosPackage_Cocos" FromRole="CocosPackage" ToRole="Cocos" />
+        </EntityType>
+        <Association Name="FK_CocosPackage_Cocos">
+          <End Role="Cocos" Type="Self.Coco" Multiplicity="1" />
+          <End Role="CocosPackage" Type="Self.CocosPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cocos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CocosPackage">
+              <PropertyRef Name="CocosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CocosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cocos" EntityType="Self.Coco" />
+          <EntitySet Name="CocosPackages" EntityType="Self.CocosPackage" />
+          <AssociationSet Name="FK_CocosPackage_Cocos" Association="Self.FK_CocosPackage_Cocos">
+            <End Role="Cocos" EntitySet="Cocos" />
+            <End Role="CocosPackage" EntitySet="CocosPackages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testingModelStoreContainer" CdmEntityContainer="CocosEntities">
+          <EntitySetMapping Name="Cocos">
+            <EntityTypeMapping TypeName="testingModel.Coco">
+              <MappingFragment StoreEntitySet="Cocos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CocosPackages">
+            <EntityTypeMapping TypeName="testingModel.CocosPackage">
+              <MappingFragment StoreEntitySet="CocosPackage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CocosId" ColumnName="CocosId" />
+                <ScalarProperty Name="age" ColumnName="age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
