@@ -92,7 +92,6 @@ namespace app.Managers
 
     public interface IManager
     {
-        DataGrid GetDataGrid();
         Tuple<bool, string> Validate(Tuple<object, bool> obj);
         void Delete();
         void Edit();
