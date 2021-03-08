@@ -12,11 +12,18 @@ namespace app
     {
         static public UIElement LabelElement(UIElement element, String labelText)
         {
+            Label label = new Label
+            {
+                Content = labelText
+            };
+
+
             DockPanel panel = new DockPanel();
-            Label label = new Label();
-            label.Content = labelText;
+
             DockPanel.SetDock(label, Dock.Left);
             DockPanel.SetDock(element, Dock.Right);
+
+            // NOTE label must be added first for element to take remaining space
             panel.Children.Add(label);
             panel.Children.Add(element);
             return panel;

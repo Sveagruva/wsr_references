@@ -88,8 +88,6 @@ namespace app.Managers
         public enum ValidateAction { Add, Edit, Remove }
 
         protected abstract bool Constructor(StackPanel element);
-
-        public Page GetPage() => this;
     }
 
     public interface IManager
@@ -99,6 +97,5 @@ namespace app.Managers
         void Delete();
         void Edit();
         void Add();
-        Page GetPage();
     }
 }

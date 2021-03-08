@@ -25,17 +25,22 @@ namespace app
         {
             InitializeComponent();
 
+            #region init managers buttons
             foreach (KeyValuePair<Type, string> managerEntry in managersNames)
             {
-                Button btn = new Button();
-                btn.Tag = managerEntry.Key;
-                btn.Content = managerEntry.Value;
+                Button btn = new Button
+                {
+                    Tag = managerEntry.Key,
+                    Content = managerEntry.Value
+                };
+
                 btn.AddHandler(Button.ClickEvent, new RoutedEventHandler(OpenPage));
                 managersStackPanel.Children.Add(btn);
             }
+            #endregion
         }
 
-        private Dictionary<Type, string> managersNames = new Dictionary<Type, string>()
+        private static readonly Dictionary<Type, string> managersNames = new Dictionary<Type, string>()
         {
             { typeof(ClientManager), "Клиенты" },
             { typeof(WorkerManager), "Агенты" }
@@ -44,11 +49,11 @@ namespace app
         private Dictionary<Type, IManager> _managers = new Dictionary<Type, IManager>();
         private Type _currentPage = typeof(ClientManager);
 
+        #region page management stuff
         private void GoToPage(IManager manager)
         {
             mainFrame.Navigate(manager as Page);
         }
-
         private void OpenPage(object sender, RoutedEventArgs e)
         {
             Type reqested = ((Button)sender).Tag as Type;
@@ -66,23 +71,24 @@ namespace app
 
             _currentPage = reqested;
         }
+        #endregion
 
+        #region buttons handlers
         private void Add(object sender, RoutedEventArgs e)
         {
             if (_managers.TryGetValue(_currentPage, out IManager manager))
                 manager.Add();
         }
-
         private void Remove(object sender, RoutedEventArgs e)
         {
             if (_managers.TryGetValue(_currentPage, out IManager manager))
                 manager.Delete();
         }
-
         private void Edit(object sender, RoutedEventArgs e)
         {
             if (_managers.TryGetValue(_currentPage, out IManager manager))
                 manager.Edit();
         }
+        #endregion
     }
 }
