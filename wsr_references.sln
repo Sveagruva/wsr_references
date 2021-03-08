@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app", "app\app.csproj", "{4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appTesting", "appTesting\appTesting.csproj", "{703A163C-175D-459C-BA4F-CB95B4C7D04A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "converter", "converter\converter.csproj", "{7C27A7AB-588D-46BD-BE14-BCD0CB8BBBD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "convertor", "convertor\convertor.csproj", "{C9B200A3-806F-4F11-98C4-45671155C266}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{703A163C-175D-459C-BA4F-CB95B4C7D04A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{703A163C-175D-459C-BA4F-CB95B4C7D04A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{703A163C-175D-459C-BA4F-CB95B4C7D04A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C27A7AB-588D-46BD-BE14-BCD0CB8BBBD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C27A7AB-588D-46BD-BE14-BCD0CB8BBBD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C27A7AB-588D-46BD-BE14-BCD0CB8BBBD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C27A7AB-588D-46BD-BE14-BCD0CB8BBBD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B200A3-806F-4F11-98C4-45671155C266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B200A3-806F-4F11-98C4-45671155C266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B200A3-806F-4F11-98C4-45671155C266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B200A3-806F-4F11-98C4-45671155C266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
