@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace converter.Properties
+namespace creationOfOneToOneRelationsWtihPopUp.Properties
 {
 
 
