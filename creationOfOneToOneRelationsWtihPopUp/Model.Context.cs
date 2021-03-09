@@ -13,10 +13,10 @@ namespace creationOfOneToOneRelationsWtihPopUp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CocosEntities : DbContext
+    public partial class testingEntities : DbContext
     {
-        public CocosEntities()
-            : base("name=CocosEntities")
+        public testingEntities()
+            : base("name=testingEntities")
         {
         }
     

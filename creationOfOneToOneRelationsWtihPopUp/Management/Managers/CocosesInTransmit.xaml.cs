@@ -1,4 +1,5 @@
-﻿using System;
+﻿using creationOfOneToOneRelationsWtihPopUp.Management.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,18 +16,18 @@ using System.Windows.Shapes;
 
 namespace creationOfOneToOneRelationsWtihPopUp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public abstract class CocosesBasePP : Manager<CocosPackageModel> { }
+    public partial class CocosesInTransmit : CocosesBasePP
     {
-        public MainWindow()
+        public CocosesInTransmit()
         {
             InitializeComponent();
-            // jk framing the seccuesess full build,, actually funny, this doesnt relate to privius sentence.
-            // and this does.
-            Coco c = new Coco();
-            framingTheMurder.Navigate(new CocosesInTransmit());
+            PremiumGridbreakingConveNSIToNahhahahahahah.ItemsSource = new testingEntities().CocosPackages.ToList();
+        }
+
+        private void Button_Click_lol(object sender, RoutedEventArgs e)
+        {
+            Add();
         }
     }
 }

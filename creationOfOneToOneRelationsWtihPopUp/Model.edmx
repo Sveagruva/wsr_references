@@ -19,6 +19,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CocosId" Type="int" Nullable="false" />
           <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="isFinished" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_CocosPackage_Cocos">
           <End Role="Cocos" Type="Self.Cocos" Multiplicity="1" />
@@ -60,6 +61,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CocosId" Type="Int32" Nullable="false" />
           <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="isFinished" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Coco" Relationship="Self.FK_CocosPackage_Cocos" FromRole="CocosPackage" ToRole="Cocos" />
         </EntityType>
         <Association Name="FK_CocosPackage_Cocos">
@@ -74,7 +76,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CocosEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="testingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cocos" EntityType="Self.Coco" />
           <EntitySet Name="CocosPackages" EntityType="Self.CocosPackage" />
           <AssociationSet Name="FK_CocosPackage_Cocos" Association="Self.FK_CocosPackage_Cocos">
@@ -87,7 +89,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testingModelStoreContainer" CdmEntityContainer="CocosEntities">
+        <EntityContainerMapping StorageEntityContainer="testingModelStoreContainer" CdmEntityContainer="testingEntities">
           <EntitySetMapping Name="Cocos">
             <EntityTypeMapping TypeName="testingModel.Coco">
               <MappingFragment StoreEntitySet="Cocos">
@@ -102,6 +104,7 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CocosId" ColumnName="CocosId" />
                 <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="isFinished" ColumnName="isFinished" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -122,6 +125,7 @@
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

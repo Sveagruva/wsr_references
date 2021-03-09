@@ -1,4 +1,5 @@
-﻿using System;
+﻿using creationOfOneToOneRelationsWtihPopUp.Management;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,27 @@ namespace creationOfOneToOneRelationsWtihPopUp
     /// </summary>
     public partial class PopUp : Window
     {
-        public PopUp()
+        IManagedTypeModel model;
+        public PopUp(IManagedTypeModel model)
         {
             InitializeComponent();
+            this.model = model;
+            DataContext = model;
+            model.Constructor(panelika);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var result = model.CheckItSelf();
+            if (result.Item1)
+            {
+                model.Save();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(result.Item2);
+            }
         }
     }
 }

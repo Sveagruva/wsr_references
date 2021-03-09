@@ -17,6 +17,7 @@ namespace creationOfOneToOneRelationsWtihPopUp
         public int Id { get; set; }
         public int CocosId { get; set; }
         public int age { get; set; }
+        public bool isFinished { get; set; }
     
         public virtual Coco Coco { get; set; }
     }

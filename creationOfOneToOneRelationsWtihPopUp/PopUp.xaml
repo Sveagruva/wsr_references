@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="PopUp" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="panelika" Grid.Row="0"></StackPanel>
+        <Button Click="Button_Click" Grid.Row="1">хноpka</Button>
     </Grid>
 </Window>

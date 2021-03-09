@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8a386a36a2924aec923904347a2140fb" Name="Diagram1">
-        <EntityTypeShape EntityType="testingModel.Coco" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="c968ceae5df44e44838c6499049ac8f4" Name="Diagram1">
+        <EntityTypeShape EntityType="testingModel.Coco" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="testingModel.CocosPackage" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="testingModel.FK_CocosPackage_Cocos" ManuallyRouted="false" />
       </Diagram>
