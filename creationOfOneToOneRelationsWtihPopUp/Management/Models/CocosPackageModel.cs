@@ -69,6 +69,7 @@ namespace creationOfOneToOneRelationsWtihPopUp.Management.Models
                 return (int)id;
             }
 
+
             Coco co = new Coco();
             co.Weight = weight;
             db.Cocos.Add(co);

@@ -13,7 +13,8 @@ namespace creationOfOneToOneRelationsWtihPopUp.Management
         IManagedTypeModel CreateNewInstance(testingEntities db);
 
         bool Constructor(StackPanel panel);
-        Tuple<bool, string> CheckItSelf();
+        Tuple<bool, string> CheckItSelf(); // TODO remove this and throw exceptions instead
         int Save();
+        // TODO make Delete function
     }
 }

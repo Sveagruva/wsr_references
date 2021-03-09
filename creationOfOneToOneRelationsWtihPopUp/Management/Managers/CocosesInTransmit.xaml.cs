@@ -22,7 +22,7 @@ namespace creationOfOneToOneRelationsWtihPopUp
         public CocosesInTransmit()
         {
             InitializeComponent();
-            PremiumGridbreakingConveNSIToNahhahahahahah.ItemsSource = new testingEntities().CocosPackages.ToList();
+            PremiumGridbreakingConveNSIToNahhahahahahah.ItemsSource = db.CocosPackages.ToList();
         }
 
         private void Button_Click_lol(object sender, RoutedEventArgs e)
