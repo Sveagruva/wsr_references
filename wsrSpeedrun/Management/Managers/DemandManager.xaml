@@ -1,0 +1,18 @@
+﻿<local:DemandManagerBase x:Class="wsrSpeedrun.Management.Managers.DemandManager"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:wsrSpeedrun.Management.Managers"
+      Title="DemandManager">
+
+    <DataGrid x:Name="grid" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Широта" Binding="{Binding Longutude}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Долгота" Binding="{Binding Latitude}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Город" Binding="{Binding City}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Улица" Binding="{Binding Street}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Номер дома" Binding="{Binding Adress}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Квартира" Binding="{Binding Flatnumber}"></DataGridTextColumn>
+            <DataGridTextColumn Header="Тип недвижимости" Binding="{Binding Converter={local:DemandTypesConverter}}"></DataGridTextColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</local:DemandManagerBase>

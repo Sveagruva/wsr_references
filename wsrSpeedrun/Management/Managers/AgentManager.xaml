@@ -1,0 +1,10 @@
+﻿<local:AgentManagerBase x:Class="wsrSpeedrun.Management.Managers.AgentManager"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:wsrSpeedrun.Management.Managers"
+      Title="AgentManager">
+    <StackPanel>
+        <TextBox x:Name="searchbox" TextChanged="searchbox_TextChanged"></TextBox>
+        <DataGrid x:Name="grid" IsReadOnly="True"></DataGrid>
+    </StackPanel>
+</local:AgentManagerBase>
