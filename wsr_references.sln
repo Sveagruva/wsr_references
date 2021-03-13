@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "creationOfOneToOneRelations
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wsrSpeedrun", "wsrSpeedrun\wsrSpeedrun.csproj", "{6429553F-6EC8-4CF8-B5FB-E848E90AA784}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APISpeedrun", "APISpeedrun\APISpeedrun.csproj", "{0CF90193-3FCF-4795-A7E2-CBFBAE7889FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6429553F-6EC8-4CF8-B5FB-E848E90AA784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6429553F-6EC8-4CF8-B5FB-E848E90AA784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6429553F-6EC8-4CF8-B5FB-E848E90AA784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CF90193-3FCF-4795-A7E2-CBFBAE7889FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CF90193-3FCF-4795-A7E2-CBFBAE7889FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CF90193-3FCF-4795-A7E2-CBFBAE7889FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CF90193-3FCF-4795-A7E2-CBFBAE7889FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
