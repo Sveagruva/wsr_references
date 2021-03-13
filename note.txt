@@ -1,0 +1,13 @@
+in .vs/project_name/config/applicationhost.config find bindings to your project and replace localhost with your local ip
+
+(to get your ip in windows you need to use ipconfig (with p, not f))
+
+<site name="APISpeedrun" id="1">
+    <application path="/" applicationPool="Clr4IntegratedAppPool">
+        <virtualDirectory path="/" physicalPath="C:\Users\Thor\source\repos\wsr_references\APISpeedrun" />
+    </application>
+    <bindings>                                          port  below your ip
+        <binding protocol="http" bindingInformation="*:52822:192.168.1.1" />
+    </bindings>
+</site>
+
